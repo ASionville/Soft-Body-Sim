@@ -9,8 +9,10 @@ class Node():
         self.force = force
         self.mass = mass
 
+        self.x, self.y, self.z = self.position
+
     def step(self, delta_time):
-        print(self.force)
+        self.previous_position = self.position.copy()
         self.force += (self.mass * GRAVITY)
 
         self.velocity += (self.force / self.mass) * delta_time
@@ -18,3 +20,4 @@ class Node():
 
         
         self.force = np.array([0.0, 0.0, 0.0])
+        self.x, self.y, self.z = self.position
